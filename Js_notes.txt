@@ -1,0 +1,358 @@
+java script : It is a client side scripting language
+
+-performs validations 
+-resides in browser
+-reduces the interaction with server , resulting in quick respnse time
+to client
+-makes web page dynamic 
+
+------------------------------------------------------------------------
+
+scripting language : It is also a type of programming language , it comes under interpreted language
+
+Js is OS and browser independent
+
+------------------------------------------------------------------------
+
+Identifiers are nothing but names given to variables , functions ,classes etc with which we can uniquely identify them
+
+
+*Identifiers rules:
+
+1. first char should be either alphabet or _ or $
+
+2. subsequent can be alpahabet or digit or _ or $
+
+Identifiers are case senstive 
+
+Var, Let , Const:
+----------------
+
+Var :
+
+var scope is limited to a function
+var allows re-declaration and re-assignement
+
+Let:
+
+Let scope is limited to a block
+let allows only re-assignment
+
+Const :
+
+If an Identifier is declared using const keyword its mandatory to initialize it at the time of declaration
+
+redeclaration as well as re assignment is not allowed
+
+once declared value can't be changed later
+
+const scope is defined as 'block scoped' 
+
+Data type:
+
+In Js , the type of varaiable is not defined during variable declaration insted it is determined at run time 
+
+That is why we call JS as loosely cupled or dynamic language 
+
+-----------------------------------------------------------------------
+
+
+The data type is said to be non-primitive if it is a collection of multiple values. 
+
+
+Array :
+
+let dummyArr = new Array();     
+//OR 
+let dummyArr = []; 
+
+digits =[1,2,3,"four"]; 
+
+------------------------------------------------------------------------
+
+The JavaScript engine can execute JavaScript code in two different modes:
+
+1. Immediate mode
+
+As soon as the webpage loads on the browser, JavaScript code embedded inside it, executes without any delay.
+
+2. Deferred mode
+
+Execution of JavaScript code is deferred or delayed until any user action like data input, button click, drop-down selection, etc. takes place.
+
+-----------------------------------------------------------------------
+
+Functions:
+
+
+In JavaScript, functions are first-class objects. This means, that you can assign a function as a value to a variable. For example :
+
+let sayHello = function () {
+	console.log("Welcome to JavaScript");
+};
+sayHello();
+
+* a function without a name is called an anonymous function
+
+Anonumous function :
+
+let sayHello = () => {
+	console.log("Welcome to JavaScript");
+};
+sayHello();
+
+--------------------------------------------------------------------
+
+Syntax 1: Multi-parameter, multi-line code: 
+
+calculateCost = (ticketPrice, noOfPerson)=>{
+    noOfPerson= ticketPrice * noOfPerson;
+    return noOfPerson;
+}
+console.log(calculateCost(500, 2));
+// 1000
+
+
+Syntax 2: No parameter, single line code:
+
+trip = () => "Let's go to trip."
+console.log(trip());
+// Let's go to trip.
+
+
+
+Syntax 3: One parameter, single line code:
+
+trip = place => "Trip to " + place;
+console.log(trip("Paris"));
+// Trip to Paris
+
+
+
+Syntax 4: One parameter, single line code:
+
+trip = _ => "Trip to " + _;
+console.log(trip("Paris"));
+// Trip to Paris
+
+
+*Arrow functions do not have their own 'this'.
+
+-------------------------------------------------------------------------
+
+*JavaScript does not throw any error if the number of arguments passed during a function invocation doesn’t match with the number of parameters listed during the function definition. If the number of parameters is more than the number of arguments, then the parameters that have no corresponding arguments are set to undefined
+
+function multiply(num1, num2) {
+	if (num2 == undefined) {
+		num2 = 1;
+	}
+	return num1 * num2;
+}
+console.log(multiply(5, 6)); // 30
+console.log(multiply(5)); // 5
+
+
+---------------------------------------------------------------------
+
+NaN
+
+
+NaN stands for Not a Number. It is a special numeric value that indicates an invalid number. For example, the division of a string by a number returns NaN:.
+
+console.log('a'/2); // NaN;
+
+The NaN has two special characteristics:
+
+Any operation with NaN returns NaN.
+
+The NaN does not equal any value, including itself.
+Here are some examples:
+
+console.log(NaN/2); // NaN
+console.log(NaN == NaN); // false
+
+Whenever we try to find square root of a negative number using Math.sqrt function, it returns NaN.
+
+Whenever we try to make on operation on NaN, it returns NaN.
+
+Any indeterminate form also returns NaN.
+
+Any operation other than addition on a string also results in NaN.
+
+------------------------------------------------------------------------------
+
+Rest parameter syntax allows to hold an indefinite number of arguments in the form of an array.
+
+function(a, …args) {
+    //…
+}
+
+
+function showNumbers(x, y, …z) {
+    return z;
+}
+console.log(showNumbers(1, 2, 3, 4, 5)); // [3,4,5]
+console.log(showNumbers(3, 4, 5, 6, 7, 8, 9, 10)); // [5,6,7,8,9,10]
+
+--------------------------------------------------------------------------
+
+parseInt
+
+This function parses string and returns an integer number.
+
+It takes two parameters :
+
+The first parameter is the string to be parsed. 
+The second parameter represents radix which is an integer between 2 and 36 that represents the numerical system to be used and is optional.
+
+The method stops parsing when it encounters a non-numerical character and returns the gathered number.
+
+If radix is omitted, JavaScript assumes radix 10. If the value begins with "0x", JavaScript assumes radix 16.
+
+parseInt("10");         //10
+
+parseInt("10 20 30");   //10, only the integer part is returned
+
+parseInt("10 years");   //10
+
+parseInt("years 10");   //NaN, the first character stops the parsing
+
+------------------------------------------------------------------------------
+
+parseFloat()
+
+This function parses string and returns a float number.
+
+Only one parameter it has
+
+------------------------------------------------------------------------------
+
+eval()
+
+It takes an argument of type string which can be an expression, statement or sequence of statements and evaluates them.
+
+eval("let num1=2; let num2=3;let result= num1 * num2;console.log(result)");
+
+let x = 10;
+let y = 20;
+let text = "x * y";
+let result = eval(text);
+
+output : 200
+
+--------------------------------------------------------------------------------
+
+
+*Variables defined outside function have Global Scope and they are accessible anywhere in the program. 
+
+
+//Global variable
+var greet = "Hello JavaScript";
+function message() {
+	
+	//Global variable accessed inside the function
+	console.log("Message from inside the function: " + greet);
+}
+message();
+//Global variable accessed outside the function
+console.log("Message from outside the function: " + greet);
+//Message from inside the function: Hello JavaScript
+//Message from outside the function: Hello JavaScript
+
+
+*If a local variable is declared without the use of keyword 'var', it takes a global scope.
+
+//Global variable
+var firstName = "Mark";
+function fullName() {
+	//Variable declared without var has global scope
+	lastName = "Zuckerberg";
+	console.log("Full Name from inside the function: " + firstName + " " + lastName);
+}
+fullName();
+console.log("Full Name from outside the function: " + firstName + " " + lastName);
+//Full Name from inside the function: Mark Zuckerberg
+//Full Name from outside the function: Mark Zuckerberg
+
+---------------------------------------------------------------------------
+
+Javascript Objects
+
+They can be created in 2 ways :
+
+1. Object literals 2. Constructor
+
+//-------------states of the object--------- 
+let myCar = {
+    name: "Fiat",
+    model: "VXI",
+    color: "red",
+    numberOfGears: 5,
+    currentGear: 3,
+    currentSpeed: 45,
+    //-------------Behaviour of the object--------- 
+    accelerate: function (speedCounter) {
+        this.currentSpeed = this.currentSpeed + speedCounter;
+        return this.currentSpeed;
+    },
+     
+    brake: function (speedCounter) {
+        this.currentSpeed = this.currentSpeed - speedCounter;
+        return this.currentSpeed;
+    }
+}
+
+Combining objects :
+
+let candidateSelected={
+	Name:'Rexha Bebe',
+	Qualification:'Graduation',
+};
+let SelectedAs={
+	jobTitle:'System Engineer',
+	location:'Bangalore'
+};
+let employeeInfo={
+	...candidateSelected,
+	...SelectedAs
+};
+console.log(employeeInfo); 
+
+
+/*
+{
+  Name: 'Rexha Bebe',
+  Qualification: 'Graduation',
+  jobTitle: 'System Engineer',
+  location: 'Bangalore'
+} 
+*/
+
+------------------------------------------------------------------------
+
+Built-In Objects:
+
+let dateObject1 = new Date(); 
+console.log("Date is: " + dateObject1);
+
+//OUTPUT: Date is: Thu Jun 18, 2020, 22:17:36 GMT+0530 (India Standard Time) 
+
+
+--------------------------------------------------------------------------------
+why there is no main method in java script?
+
+JavaScript is event-driven, the program written in JavaScript doesn't have a start and an end. You can compare it to any desktop UI toolkit, where you handle button clicks and key presses, but there is no obvious main once the program is initialized. For instance there is a window.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
